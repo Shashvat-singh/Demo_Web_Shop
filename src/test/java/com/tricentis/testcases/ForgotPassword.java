@@ -1,18 +1,15 @@
 package com.tricentis.testcases;
 
 import org.testng.annotations.AfterMethod;
+
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.SkipException;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
-import com.tricentis.actiondriver.Action;
 import com.tricentis.base.Base;
 import com.tricentis.dataprovider.ForgotPasswordDataProvider;
 import com.tricentis.pageobjects.ForgotPasswordPage;
