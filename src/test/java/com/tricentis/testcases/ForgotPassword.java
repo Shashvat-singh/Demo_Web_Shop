@@ -1,5 +1,8 @@
 package com.tricentis.testcases;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
@@ -47,6 +50,7 @@ public class ForgotPassword extends Base{
 		forgotPasswordPage = new ForgotPasswordPage(driver);
 		
 	}
+	
 	@AfterMethod
 	public void tearDown() {
 		if (driver != null) {
@@ -58,7 +62,7 @@ public class ForgotPassword extends Base{
 		forgotPasswordPage.sendTxtToYourEmailAddress(hMapPwdWithWrongEmailText.get("Email"));
 		forgotPasswordPage.cklOnRecoveryBtn();
 		forgotPasswordPage.wrgEmailValidationTxtGet();
-		Assert.assertEquals(forgotPasswordPage.wrgEmailValidationTxtGet(), hMapPwdWithWrongEmailText.get("ValidationError01"));
+		AssertJUnit.assertEquals(forgotPasswordPage.wrgEmailValidationTxtGet(), hMapPwdWithWrongEmailText.get("ValidationError01"));
 	}
 	@Test (dataProvider = "dataForVerRcyOfPwdWithNotResEmailTxt", dataProviderClass = ForgotPasswordDataProvider.class)
 	public void verRcyOfPwdWithNotResEmailTxt(HashMap<String, String>hMapPwdWithNotResEmailTxt) {
@@ -66,7 +70,7 @@ public class ForgotPassword extends Base{
 		forgotPasswordPage.cklOnRecoveryBtn();
 		forgotPasswordPage.emailNotFoundValTxtGet();
 		System.out.println(forgotPasswordPage.emailNotFoundValTxtGet());
-		Assert.assertEquals(forgotPasswordPage.emailNotFoundValTxtGet(), hMapPwdWithNotResEmailTxt.get("ValidationError01"));
+		AssertJUnit.assertEquals(forgotPasswordPage.emailNotFoundValTxtGet(), hMapPwdWithNotResEmailTxt.get("ValidationError01"));
 	}
 	@Test (dataProvider = "dataForVerRcyOfPwdWithVldResEmailAdd", dataProviderClass = ForgotPasswordDataProvider.class)
 	public void verRcyOfPwdWithVldResEmailAdd(HashMap<String, String>hMapPwdWithVldResEmailAdd) {
@@ -74,7 +78,7 @@ public class ForgotPassword extends Base{
 		forgotPasswordPage.cklOnRecoveryBtn();
 		forgotPasswordPage.emailNotFoundValTxtGet();
 		System.out.println(forgotPasswordPage.emailNotFoundValTxtGet());
-		Assert.assertEquals(forgotPasswordPage.emailNotFoundValTxtGet(), hMapPwdWithVldResEmailAdd.get("ValidationError01"));
+		AssertJUnit.assertEquals(forgotPasswordPage.emailNotFoundValTxtGet(), hMapPwdWithVldResEmailAdd.get("ValidationError01"));
 	}
 	
 }

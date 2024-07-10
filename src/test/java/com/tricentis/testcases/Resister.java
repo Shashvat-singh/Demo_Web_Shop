@@ -1,6 +1,9 @@
 package com.tricentis.testcases;
 
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
@@ -80,8 +83,8 @@ public class Resister extends Base {
 		
 		resisterPage.clickOnResisterButton();
 		
-		Assert.assertEquals(hMapRegisterWithoutPasswords.get("ErrMsgPass"), resisterPage.getValidationRemarkPassword());
-		Assert.assertEquals(hMapRegisterWithoutPasswords.get("ErrMsgConPass"), resisterPage.getValidationRemarkConfPassword());
+		AssertJUnit.assertEquals(hMapRegisterWithoutPasswords.get("ErrMsgPass"), resisterPage.getValidationRemarkPassword());
+		AssertJUnit.assertEquals(hMapRegisterWithoutPasswords.get("ErrMsgConPass"), resisterPage.getValidationRemarkConfPassword());
 	}
 	
 	
@@ -101,7 +104,7 @@ public class Resister extends Base {
 		
 		resisterPage.clickOnResisterButton();
 		
-		Assert.assertEquals(hMapRegisterWithoutFirstName.get("ErrMsgFirstName"), resisterPage.getValidationRemarkFirstName());
+		AssertJUnit.assertEquals(hMapRegisterWithoutFirstName.get("ErrMsgFirstName"), resisterPage.getValidationRemarkFirstName());
 	}
 	@Test (dataProvider = "dataOfRegisterWithAlreadyUsedEmailAddress", dataProviderClass = ResisterDataProvider.class)
 	public void registerWithAlreadyUsedEmailAddress(HashMap<String, String>hMapRegisterWithAlreadyUsedEmail) {
@@ -118,7 +121,7 @@ public class Resister extends Base {
 		
 		resisterPage.clickOnResisterButton();
 		
-		Assert.assertEquals(hMapRegisterWithAlreadyUsedEmail.get("ErrMsgAlreadyUsedEmail"), resisterPage.getValidationRemarkForAlreadyUsedEmail());
+		AssertJUnit.assertEquals(hMapRegisterWithAlreadyUsedEmail.get("ErrMsgAlreadyUsedEmail"), resisterPage.getValidationRemarkForAlreadyUsedEmail());
 		
 	}
 	

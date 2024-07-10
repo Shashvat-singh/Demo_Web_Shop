@@ -1,5 +1,8 @@
 package com.tricentis.testcases;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.util.HashMap;
 
 
@@ -76,7 +79,7 @@ public class LogIn extends Base {
 			convertedExpectedResult = false;
 		}
 
-		Assert.assertEquals(accountPage.verifyLoginStatus(hMapValidData.get("Username")), convertedExpectedResult);
+		AssertJUnit.assertEquals(accountPage.verifyLoginStatus(hMapValidData.get("Username")), convertedExpectedResult);
 	}
 
 	@Test(dataProvider = "dataForLoginWithInvalidCredentials", dataProviderClass = LoginDataProvider.class)
@@ -91,8 +94,8 @@ public class LogIn extends Base {
 		
 		String errorMsg01 = hMapInvalidCredentials.get("ValidationError01");
 		String errorMsg02 = hMapInvalidCredentials.get("ValidationError02");
-		Assert.assertEquals(errorMsg01, "Login was unsuccessful. Please correct the errors and try again.");
-		Assert.assertEquals(errorMsg02, "No customer account found");
+		AssertJUnit.assertEquals(errorMsg01, "Login was unsuccessful. Please correct the errors and try again.");
+		AssertJUnit.assertEquals(errorMsg02, "No customer account found");
 	}
 
 
@@ -106,8 +109,8 @@ public class LogIn extends Base {
 		loginPage.sendTextToPasswordField(hMapValidEmailInvalidPassword.get("Password"));
 		loginPage.clickOnLoginButton();
 		
-		Assert.assertEquals(hMapValidEmailInvalidPassword.get("ValidationError01"), loginPage.validationOneForLoginWithValidEmailInvalidPass());
-		Assert.assertEquals(hMapValidEmailInvalidPassword.get("ValidationError02"), loginPage.validationSecoundForLoginWithValidEmailInvalidPass());
+		AssertJUnit.assertEquals(hMapValidEmailInvalidPassword.get("ValidationError01"), loginPage.validationOneForLoginWithValidEmailInvalidPass());
+		AssertJUnit.assertEquals(hMapValidEmailInvalidPassword.get("ValidationError02"), loginPage.validationSecoundForLoginWithValidEmailInvalidPass());
 	}
 
 	@Test(dataProvider = "dataForLoginWithInalidEmailValidPassword", dataProviderClass = LoginDataProvider.class)
@@ -120,8 +123,8 @@ public class LogIn extends Base {
 		loginPage.sendTextToPasswordField(hMapInvalidEmailValidPassword.get("Password"));
 		loginPage.clickOnLoginButton();
 		
-		Assert.assertEquals(hMapInvalidEmailValidPassword.get("ValidationError01"), "Login was unsuccessful. Please correct the errors and try again.");
-		Assert.assertEquals(hMapInvalidEmailValidPassword.get("ValidationError02"), "The credentials provided are incorrect");
+		AssertJUnit.assertEquals(hMapInvalidEmailValidPassword.get("ValidationError01"), "Login was unsuccessful. Please correct the errors and try again.");
+		AssertJUnit.assertEquals(hMapInvalidEmailValidPassword.get("ValidationError02"), "The credentials provided are incorrect");
 	}
 
 }

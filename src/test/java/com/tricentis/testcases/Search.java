@@ -1,5 +1,8 @@
 package com.tricentis.testcases;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.util.HashMap;
 import java.util.Properties;
 
@@ -17,7 +20,7 @@ import com.tricentis.pageobjects.HomePage;
 import com.tricentis.pageobjects.SearchPage;
 import com.tricentis.util.DataUtil;
 import com.tricentis.util.MyXLSReader;
-
+//Changes Done at Branch_01
 public class Search extends Base {
 	WebDriver driver;
 	MyXLSReader excelReader;
@@ -40,7 +43,7 @@ public class Search extends Base {
 
 	}
 
-	//@AfterMethod
+	@AfterMethod
 	public void tearDown() {
 		if (driver != null) {
 			driver.quit();
@@ -56,7 +59,7 @@ public class Search extends Base {
 		homePage = new HomePage(driver);
 		homePage.clickOnTheSearchBtn();
 		System.out.println(homePage.getAlertText());
-		Assert.assertEquals(homePage.getAlertText(), hMapErrAlertForSearchProductWithoutSearchKeyword.get("Alert"));
+		AssertJUnit.assertEquals(homePage.getAlertText(), hMapErrAlertForSearchProductWithoutSearchKeyword.get("Alert"));
 	}
 
 	@Test(dataProvider = "dataForVerifyProductSearchFunOnHomePage", dataProviderClass = SearchDataProvider.class)
@@ -69,7 +72,7 @@ public class Search extends Base {
 		homePage.enterProductDescInSearchBox(hMapProductSearchFunOnHomePage.get("Search"));
 		homePage.clickOnTheSearchBtn();
 		searchPage = new SearchPage(driver);
-		Assert.assertTrue(searchPage.searchedProductPageVisibility());
+		AssertJUnit.assertTrue(searchPage.searchedProductPageVisibility());
 	}
 
 	@Test(dataProvider = "dataForVerifyProductSearchFunOnSearchPage", dataProviderClass = SearchDataProvider.class)
@@ -83,7 +86,7 @@ public class Search extends Base {
 		homePage.clickOnTheSearchBtn();
 		searchPage = new SearchPage(driver);
 		searchPage.searchProductThroughSearchInputField(hMapProductSearchFunOnSearchPage.get("Search2"));
-		Assert.assertTrue(searchPage.searchedProductPageVisibility());
+		AssertJUnit.assertTrue(searchPage.searchedProductPageVisibility());
 	}
 	
 	@Test (dataProvider = "dataForErrAlertForProductSearchFunOnSearchPage", dataProviderClass = SearchDataProvider.class)
@@ -108,7 +111,7 @@ public class Search extends Base {
 		}
 		
 		String alertTxt = searchPage.gettingErrAlertForSearchNothingThruSearchBoxOfSearchPage();
-		Assert.assertEquals(searchPage.isDisplayErrAlertForSearchNothingThruSearchBoxOfSearchPage(), convertedExpectedResult);
+		AssertJUnit.assertEquals(searchPage.isDisplayErrAlertForSearchNothingThruSearchBoxOfSearchPage(), convertedExpectedResult);
 		//Assert.assertEquals(searchPage.gettingErrAlertForSearchNothingThruSearchBoxOfSearchPage(), hMapErrAlertForProductSearchFunOnSearchPage.get("Alert"));
 	}
 	

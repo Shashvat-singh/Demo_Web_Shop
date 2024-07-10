@@ -1,6 +1,9 @@
 
 package com.tricentis.testcases;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
@@ -80,7 +83,7 @@ public class AddToCart extends Base {
 			convertedExpectedResult = false;
 		}
 
-		Assert.assertEquals(NoOfProductIsEqualToNoOfAddToCartBtn, convertedExpectedResult);
+		AssertJUnit.assertEquals(NoOfProductIsEqualToNoOfAddToCartBtn, convertedExpectedResult);
 
 	}
 	@Test (dataProvider = "dataSuccessMsgForAddToCartProd", dataProviderClass = AddToCartDataProvider.class)
