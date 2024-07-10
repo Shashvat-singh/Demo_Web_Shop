@@ -1,6 +1,7 @@
 package com.tricentis.testcases;
 
 import org.testng.annotations.AfterMethod;
+
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import java.util.HashMap;
@@ -15,7 +16,10 @@ import com.tricentis.pageobjects.HomePage;
 import com.tricentis.pageobjects.SearchPage;
 import com.tricentis.util.DataUtil;
 import com.tricentis.util.MyXLSReader;
+<<<<<<< HEAD
 //Changes Done at Branch_01 secound Time
+=======
+>>>>>>> refs/heads/master
 public class Search extends Base {
 	WebDriver driver;
 	MyXLSReader excelReader;
@@ -105,7 +109,6 @@ public class Search extends Base {
 			convertedExpectedResult = true;
 		}
 		
-		String alertTxt = searchPage.gettingErrAlertForSearchNothingThruSearchBoxOfSearchPage();
 		AssertJUnit.assertEquals(searchPage.isDisplayErrAlertForSearchNothingThruSearchBoxOfSearchPage(), convertedExpectedResult);
 		//Assert.assertEquals(searchPage.gettingErrAlertForSearchNothingThruSearchBoxOfSearchPage(), hMapErrAlertForProductSearchFunOnSearchPage.get("Alert"));
 	}

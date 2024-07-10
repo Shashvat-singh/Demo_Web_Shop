@@ -3,8 +3,8 @@ package com.tricentis.base;
 import java.io.File;
 
 
+
 import java.io.FileInputStream;
-import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -12,7 +12,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import com.tricentis.pageobjects.HomePage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
